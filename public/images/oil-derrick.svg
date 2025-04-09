@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Oil Derrick -->
+  <path d="M400 50 L400 200 L350 500 L450 500 L400 200 Z" fill="none" stroke="white" stroke-width="15"/>
+  <path d="M300 500 L500 500" stroke="white" stroke-width="15"/>
+  <path d="M350 200 L450 200" stroke="white" stroke-width="15"/>
+  <path d="M320 350 L480 350" stroke="white" stroke-width="15"/>
+  
+  <!-- Support Beams -->
+  <path d="M330 200 L275 500" stroke="white" stroke-width="10"/>
+  <path d="M470 200 L525 500" stroke="white" stroke-width="10"/>
+  
+  <!-- Base -->
+  <rect x="250" y="500" width="300" height="50" fill="white"/>
+  
+  <!-- Cross Beams -->
+  <path d="M330 200 L470 350" stroke="white" stroke-width="5"/>
+  <path d="M470 200 L330 350" stroke="white" stroke-width="5"/>
+</svg> 
