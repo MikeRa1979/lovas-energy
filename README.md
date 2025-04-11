@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lovas Energy Services Website
 
-## Getting Started
+This repository contains the Next.js website for Lovas Energy Services.
 
-First, run the development server:
+## Deployment Pipeline
+
+This README documents the process for building and deploying the Lovas Energy Services website to Netlify with proper routing and asset handling.
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or yarn
+- Git
+- GitHub account
+- Netlify account
+
+### Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build Process
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build the website for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Generate static export
+npm run build
+```
 
-## Learn More
+### Deployment Strategy
 
-To learn more about Next.js, take a look at the following resources:
+The site uses a static export of Next.js deployed to Netlify with custom configuration for proper routing and content types.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Key Configuration Files
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. `netlify.toml` - Controls routing and caching:
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+  conditions = {Path = {match = "!/_next/*"}}
+  conditions = {Path = {match = "!/static/*"}}
+  conditions = {Path = {match = "!/*.js"}}
+  conditions = {Path = {match = "!/*.css"}}
+  conditions = {Path = {match = "!/*.woff2"}}
 
-## Deploy on Vercel
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000, immutable"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+```
+
+2. `public/_headers` - Ensures correct content types:
+```
+/static/chunks/*.js
+  Content-Type: application/javascript
+
+/*.js
+  Content-Type: application/javascript
+
+/_next/static/chunks/*.js
+  Content-Type: application/javascript
+  
+/static/css/*.css
+  Content-Type: text/css
+
+/*.css
+  Content-Type: text/css
+  
+/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+```
+
+3. `public/_redirects` - Fallback for client-side routing:
+```
+/* /index.html 200
+
+# Fix for _next path references
+/_next/static/chunks/:file /static/chunks/:file 200
+/_next/static/css/:file /static/css/:file 200
+/_next/static/media/:file /static/media/:file 200
+/_next/* /static/:splat 200
+```
+
+### Deployment Steps
+
+1. **Build the static site**:
+   ```bash
+   npm run build
+   ```
+
+2. **Prepare the static output**:
+   ```bash
+   # Create and populate the out directory
+   rm -rf out
+   mkdir -p out
+   cp -r .next/static out/
+   cp -r public/* out/
+   cp -a .next/server/app/. out/app/
+   cp .next/server/app/index.html out/
+   touch out/.nojekyll
+   ```
+
+3. **Create _next directory structure** (CRITICAL):
+   ```bash
+   # This step is crucial to prevent JavaScript loading errors
+   cd out
+   mkdir -p _next/static
+   cp -r static/* _next/static/
+   ```
+
+4. **Initialize Git in the output directory**:
+   ```bash
+   cd out
+   git init
+   git add .
+   git commit -m "Deploy static site"
+   ```
+
+5. **Connect to GitHub repository**:
+   ```bash
+   git remote add origin https://github.com/MikeRa1979/lovas-energy-site.git
+   git push -f origin master
+   ```
+
+6. **Connect Netlify to the GitHub repository**:
+   - In Netlify dashboard, select "New site from Git"
+   - Choose GitHub and select your repository
+   - Set build command to `# no build needed`
+   - Set publish directory to `/`
+   - Deploy the site
+
+7. **Set up custom domain in Netlify**:
+   - Go to Site settings > Domain management
+   - Add custom domain: lovasenergy.com
+   - Update DNS records at your domain registrar
+
+### Troubleshooting
+
+If you encounter JavaScript loading issues with "Unexpected token '<'" errors:
+
+1. Make sure the `_next` directory structure exists and contains copies of all static files
+2. Verify the `_headers` file is correctly set up in your repository
+3. Check that `netlify.toml` is properly configured
+4. Make sure all configuration files are in the root of your deployed site
+5. Trigger a new deployment in Netlify
+
+### DNS Configuration
+
+To point your GoDaddy domain to Netlify:
+
+1. In GoDaddy DNS settings:
+   - Remove any A records pointing to GoDaddy servers
+   - Add custom nameservers provided by Netlify, or
+   - Add CNAME record pointing to your Netlify subdomain
+
+2. Verify DNS propagation:
+   ```bash
+   dig lovasenergy.com
+   ```
+
+### Maintenance
+
+For future updates:
+
+1. Make changes in the main repository
+2. Rebuild with `npm run build` 
+3. Follow the deployment steps above to update the site
