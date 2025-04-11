@@ -434,6 +434,64 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="py-12 bg-blue-800 text-white">
+          <div className="container mx-auto px-4">
+            <h3 className="text-2xl font-bold text-center mb-8">What Our Clients Say</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-blue-900/50 p-6 rounded-lg shadow-lg">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <svg className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+                    </svg>
+                  </div>
+                  <p className="flex-grow italic mb-4">
+                    Lovas Energy Services transformed our operations with their burner management systems. Their expertise in the oil and gas industry is unmatched, and their responsive support has saved us countless hours of downtime.
+                  </p>
+                  <div>
+                    <p className="font-bold">James Thompson</p>
+                    <p className="text-sm text-blue-200">Operations Manager</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-blue-900/50 p-6 rounded-lg shadow-lg">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <svg className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+                    </svg>
+                  </div>
+                  <p className="flex-grow italic mb-4">
+                    We&apos;ve partnered with Lovas Energy for over five years, and their combustion control solutions have consistently delivered reliability and efficiency. Their field services team responds quickly and solves problems the first time.
+                  </p>
+                  <div>
+                    <p className="font-bold">Sarah Rodriguez</p>
+                    <p className="text-sm text-blue-200">Technical Director</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-blue-900/50 p-6 rounded-lg shadow-lg">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <svg className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+                    </svg>
+                  </div>
+                  <p className="flex-grow italic mb-4">
+                    As a veteran-owned business ourselves, we appreciate Lovas Energy&apos;s commitment to quality and service. Their engineering team designed a custom solution for our SENM operations that improved safety and cut maintenance costs by 30%.
+                  </p>
+                  <div>
+                    <p className="font-bold">Michael Reyes</p>
+                    <p className="text-sm text-blue-200">CEO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-blue-900 mb-6">Contact Us</h3>
@@ -516,7 +574,7 @@ export default function Home() {
                     <svg className="w-6 h-6 text-blue-900 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <p className="text-gray-700">Sales@lovasenegy.com</p>
+                    <p className="text-gray-700">Sales@lovasenergy.com</p>
                   </div>
                 </div>
                 <div className="mt-8">
@@ -573,7 +631,7 @@ export default function Home() {
             <div>
               <h4 className="text-xl font-bold mb-4">Contact</h4>
               <p className="text-blue-200">713-449-4847</p>
-              <p className="text-blue-200">Sales@lovasenegy.com</p>
+              <p className="text-blue-200">Sales@lovasenergy.com</p>
             </div>
           </div>
           <div className="border-t border-blue-800 mt-8 pt-8 text-center">
