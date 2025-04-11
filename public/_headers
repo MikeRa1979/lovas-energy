@@ -1,0 +1,8 @@
+/static/chunks/*.js
+  Content-Type: application/javascript
+  
+/static/css/*.css
+  Content-Type: text/css
+  
+/static/media/*
+  Cache-Control: public, max-age=31536000, immutable 
