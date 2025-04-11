@@ -1,7 +1,16 @@
 /static/chunks/*.js
   Content-Type: application/javascript
+
+/*.js
+  Content-Type: application/javascript
+
+/_next/static/chunks/*.js
+  Content-Type: application/javascript
   
 /static/css/*.css
+  Content-Type: text/css
+
+/*.css
   Content-Type: text/css
   
 /static/media/*

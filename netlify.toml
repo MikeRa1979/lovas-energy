@@ -3,7 +3,23 @@
   to = "/index.html"
   status = 200
   force = false
+  conditions = {Path = {match = "!/_next/*"}}
   conditions = {Path = {match = "!/static/*"}}
+  conditions = {Path = {match = "!/*.js"}}
+  conditions = {Path = {match = "!/*.css"}}
+  conditions = {Path = {match = "!/*.woff2"}}
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/static/*"
