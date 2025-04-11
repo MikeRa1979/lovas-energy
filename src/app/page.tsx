@@ -145,7 +145,7 @@ export default function Home() {
                     <h4 className="font-bold text-blue-900 mb-2">Experience</h4>
                     <ul className="text-sm text-gray-700 space-y-1">
                       <li>• Decades of industry experience</li>
-                      <li>• Veteran-owned business</li>
+                      <li>• Industry certified systems</li>
                       <li>• Established industry presence</li>
                     </ul>
                   </div>
@@ -480,7 +480,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <p className="flex-grow italic mb-4">
-                    As a veteran-owned business ourselves, we appreciate Lovas Energy&apos;s commitment to quality and service. Their engineering team designed a custom solution for our SENM operations that improved safety and cut maintenance costs by 30%.
+                    As a safety-focused operation, we appreciate Lovas Energy&apos;s commitment to quality and industry standards. Their engineering team designed a custom solution for our SENM operations that improved safety and cut maintenance costs by 30%.
                   </p>
                   <div>
                     <p className="font-bold">Michael Reyes</p>
