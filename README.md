@@ -33,6 +33,22 @@ To build the website for production:
 npm run build
 ```
 
+### Styling Customizations
+
+#### Form Text Color
+
+To adjust form input text color, modify the input and textarea classes in `src/app/page.tsx`. For black text:
+
+```tsx
+className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+```
+
+#### Other Common Styling Changes
+
+- **Button colors**: Modify the `btn-primary` class in `src/app/globals.css`
+- **Heading colors**: Change the `text-blue-900` class to another color in heading elements
+- **Background colors**: Update the background classes (e.g., `bg-blue-900`, `bg-gray-50`) throughout the components
+
 ### Deployment Strategy
 
 The site uses a static export of Next.js deployed to Netlify with custom configuration for proper routing and content types.
